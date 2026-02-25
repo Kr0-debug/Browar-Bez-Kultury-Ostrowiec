@@ -443,7 +443,7 @@ footer{background:var(--dark);border-top:3px solid var(--red);}
         </div>
 
         <div class="product-card" data-cat="piwo">
-          <div class="product-visual"><img class="product-img" src="" alt="PSZENICZNE - zdjecie piwa"><div class="pv-bg">PSZ</div><div class="pv-icon">&#x1F37A;</div><span class="p-tag">Pszeniczne</span></div>
+          <div class="product-visual"><img class="product-img" src="/img/pszeniczne.png" alt=""><div class="pv-bg">PSZ</div><div class="pv-icon"></div><span class="p-tag">Pszeniczne</span></div>
           <div class="p-cat">Piwo</div><div class="p-name">PSZENICZNE</div>
           <div class="p-desc">Klasyczne piwo pszeniczne. Czyste, lekkie, z charakterem.</div>
           <select class="p-select" id="var-pszeniczne" onchange="updatePrice('pszeniczne',this)">
@@ -828,6 +828,23 @@ function showToast(msg){
   t.textContent=msg;t.classList.add('show');
   setTimeout(function(){t.classList.remove('show');},2200);
 }
+
+// Nadpisanie domyslnego zachowania etykiety konta, zeby nie pokazywac tekstu data:image
+function updateNavAccount(){
+  var btn=document.getElementById('accountNavBtn');
+  var label=document.getElementById('accountNavLabel');
+  if(!btn||!label)return;
+  if(currentUser){
+    label.textContent=currentUser.name.split(' ')[0].toUpperCase();
+    btn.classList.add('logged');
+  }else{
+    label.textContent='KONTO';
+    btn.classList.remove('logged');
+  }
+}
+
+// Ustaw poprawna etykiete po zaladowaniu skryptu
+try{updateNavAccount();}catch(e){}
 </script>
 </body>
 </html>
