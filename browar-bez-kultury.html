@@ -143,6 +143,8 @@ nav{
 }
 .nav-links a:hover{color:var(--white);}
 .nav-links a:hover::after{width:100%;}
+.nav-cart-count{display:inline-block;min-width:1.1em;height:1.1em;line-height:1.1;margin-left:0.25rem;padding:0 0.25em;background:var(--red);color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:0.5rem;font-weight:700;border-radius:50%;vertical-align:middle;text-align:center;}
+.nav-cart-count:empty{display:none;}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;}
 .nav-toggle span{display:block;width:22px;height:1px;background:var(--white);margin:5px 0;transition:all 0.25s;}
 
@@ -345,6 +347,8 @@ h2{
   color:rgba(240,236,228,0.3);letter-spacing:0.05em;
 }
 .beer-price strong{color:var(--red);font-size:1rem;}
+.beer-cta{margin-top:1rem;}
+.beer-cta .btn-red{font-size:0.95rem;padding:0.65rem 1.5rem;}
 .deska-bar{
   grid-column:1/-1;
   display:flex;justify-content:space-between;align-items:center;
@@ -601,6 +605,7 @@ footer{
     <li><a href="#piwa" onclick="closeNav()">Piwa</a></li>
     <li><a href="#karta" onclick="closeNav()">Karta</a></li>
     <li><a href="#taproom" onclick="closeNav()">Taproom</a></li>
+    <li><a href="sklep.html" onclick="closeNav()">Sklep <span class="nav-cart-count" id="navCartCount" aria-hidden="true"></span></a></li>
     <li><a href="#kontakt" onclick="closeNav()">Kontakt</a></li>
   </ul>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
@@ -713,6 +718,7 @@ footer{
         <div class="beer-name">PILS</div>
         <div class="beer-desc">Klasyczny, czysty, bez udawania. Złocisty lager prosto z ostrowieckich kranów.</div>
         <div class="beer-price"><strong>0.5L — 27 zł</strong> &nbsp;·&nbsp; 0.3L — 14 zł &nbsp;·&nbsp; 0.25L — 10 zł</div>
+        <div class="beer-cta"><a href="sklep.html#product-pils" class="btn-red">Kup teraz</a></div>
       </div>
       <div class="beer-card">
         <div class="beer-num">02</div>
@@ -720,6 +726,7 @@ footer{
         <div class="beer-name">APA</div>
         <div class="beer-desc">Aromatyczne, chmielowe, z lekką goryczką. Piwo dla tych co wiedzą czego chcą.</div>
         <div class="beer-price"><strong>0.5L — 27 zł</strong> &nbsp;·&nbsp; 0.3L — 14 zł &nbsp;·&nbsp; 0.25L — 10 zł</div>
+        <div class="beer-cta"><a href="sklep.html#product-apa" class="btn-red">Kup teraz</a></div>
       </div>
       <div class="beer-card">
         <div class="beer-num">03</div>
@@ -727,6 +734,7 @@ footer{
         <div class="beer-name">MARCOWE</div>
         <div class="beer-desc">Pełne, słodowe, z charakterem. Tradycja warzona na przekór porze roku.</div>
         <div class="beer-price"><strong>0.5L — 27 zł</strong> &nbsp;·&nbsp; 0.3L — 14 zł &nbsp;·&nbsp; 0.25L — 10 zł</div>
+        <div class="beer-cta"><a href="sklep.html#product-marcowe" class="btn-red">Kup teraz</a></div>
       </div>
       <div class="beer-card">
         <div class="beer-num">04</div>
@@ -734,6 +742,7 @@ footer{
         <div class="beer-name">PSZENICA / KOŹLAK</div>
         <div class="beer-desc">Pszeniczna lekkość albo koźlakowa głębia — zależy od sezonu i humoru.</div>
         <div class="beer-price"><strong>0.5L — 27 zł</strong> &nbsp;·&nbsp; 0.3L — 14 zł &nbsp;·&nbsp; 0.25L — 10 zł</div>
+        <div class="beer-cta"><a href="sklep.html#product-pszeniczne" class="btn-red">Kup teraz</a></div>
       </div>
       <div class="beer-card">
         <div class="beer-num">05</div>
@@ -741,6 +750,7 @@ footer{
         <div class="beer-name">PIWO GRZANE</div>
         <div class="beer-desc">Na zimne ostrowieckie wieczory. Z przyprawami, ciepłe, rozgrzewające.</div>
         <div class="beer-price"><strong>17 zł</strong> &nbsp;·&nbsp; z dodatkami — 21 zł</div>
+        <div class="beer-cta"><a href="sklep.html" class="btn-red">Kup w sklepie</a></div>
       </div>
       <div class="beer-card">
         <div class="beer-num">06</div>
@@ -748,6 +758,7 @@ footer{
         <div class="beer-name">MALINOWE</div>
         <div class="beer-desc">Malinowy akcent dla tych, którzy lubią trochę słodyczy. Bez przeprosin.</div>
         <div class="beer-price"><strong>22 zł</strong></div>
+        <div class="beer-cta"><a href="sklep.html" class="btn-red">Kup w sklepie</a></div>
       </div>
 
       <!-- DESKA -->
@@ -836,10 +847,87 @@ footer{
         <div class="mrow"><span>Pieczywo</span><span>6</span></div>
         <div class="mrow"><span>Sos chimichurri</span><span>6</span></div>
         <div class="mrow"><span>Sosy (musztarda, chrzan, ketchup...)</span><span>3</span></div>
-        <div class="menu-cat mt">Wódka</div>
-        <div class="mrow"><span>Stumbras</span><span>11 / 40ml/100/0.5l</span></div>
-        <div class="mrow"><span>Nemirof</span><span>11 / 40ml/100/0.5l</span></div>
-        <div class="mrow"><span>Bez Kultury</span><span>14 / 40ml/140/0.5l</span></div>
+      </div>
+    </div>
+
+    <div class="menu-grid" style="margin-top:2.5rem;">
+      <div class="menu-col">
+        <div class="menu-cat">Napoje zimne</div>
+        <div class="mrow"><span>Pepsi Zero</span><span>0.5L 24 / 0.3L 10</span></div>
+        <div class="mrow"><span>Pepsi</span><span>0.5L 24 / 0.3L 10</span></div>
+        <div class="mrow"><span>Mirinda</span><span>0.5L 24 / 0.3L 10</span></div>
+        <div class="mrow"><span>7UP</span><span>0.5L 24 / 0.3L 10</span></div>
+        <div class="mrow"><span>Schweppes</span><span>0.5L 24 / 0.3L 10</span></div>
+        <div class="mrow"><span>Soki Toma (pomarańczowy, jabłkowy, czarna porzeczka)</span><span>0.5L 22 / 0.3L 10</span></div>
+        <div class="mrow"><span>Woda z gazem</span><span>0.5L 20 / 0.3L 8</span></div>
+        <div class="mrow"><span>Woda bez gazu</span><span>0.5L 20 / 0.3L 8</span></div>
+        <div class="mrow"><span>Lemoniada</span><span>0.5L 32 / 0.3L 16</span></div>
+        <div class="mrow"><span>Kawa mrożona</span><span>19</span></div>
+        <div class="mrow"><span>Kawa mrożona z dodatkami</span><span>26</span></div>
+
+        <div class="menu-cat mt">Napoje gorące</div>
+        <div class="mrow"><span>Herbata Rychmont</span><span>16</span></div>
+        <div class="mrow"><span>Herbata z dodatkami</span><span>18</span></div>
+        <div class="mrow"><span>Espresso</span><span>13</span></div>
+        <div class="mrow"><span>Kawa czarna</span><span>13</span></div>
+        <div class="mrow"><span>Kawa biała</span><span>15</span></div>
+        <div class="mrow"><span>Cappuccino</span><span>15</span></div>
+        <div class="mrow"><span>Latte macchiato</span><span>17</span></div>
+        <div class="mrow"><span>Piwo grzane</span><span>17</span></div>
+        <div class="mrow"><span>Piwo grzane z dodatkami</span><span>21</span></div>
+
+        <div class="menu-cat mt">Piwo</div>
+        <div class="mrow"><span>Pils</span><span>0.5L 27 / 0.3L 14 / 0.25L 10</span></div>
+        <div class="mrow"><span>Marcowe</span><span>0.5L 27 / 0.3L 14 / 0.25L 10</span></div>
+        <div class="mrow"><span>Pszenica / Koźlak</span><span>0.5L 27 / 0.3L 14 / 0.25L 10</span></div>
+        <div class="mrow"><span>APA</span><span>0.5L 27 / 0.3L 14 / 0.25L 10</span></div>
+        <div class="mrow"><span>Deska degustacyjna</span><span>20</span></div>
+        <div class="mrow"><span>Malinowe</span><span>22</span></div>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-cat">Wódka</div>
+        <div class="mrow"><span>Stumbras</span><span>40ml 11 / 0.5L 100</span></div>
+        <div class="mrow"><span>Nemirof</span><span>40ml 11 / 0.5L 100</span></div>
+        <div class="mrow"><span>Bez Kultury</span><span>40ml 14 / 0.5L 140</span></div>
+
+        <div class="menu-cat mt">Nalewki</div>
+        <div class="mrow"><span>Malina</span><span>40ml 12 / 0.5L 120</span></div>
+        <div class="mrow"><span>Deren</span><span>40ml 12 / 0.5L 120</span></div>
+
+        <div class="menu-cat mt">Whisky</div>
+        <div class="mrow"><span>Monkey Shoulder</span><span>40ml 18 / 0.7L 240</span></div>
+        <div class="mrow"><span>Jack Daniel&#39;s</span><span>40ml 18 / 0.7L 160</span></div>
+        <div class="mrow"><span>J.A. Baczewski</span><span>40ml 18 / 0.7L 200</span></div>
+
+        <div class="menu-cat mt">Wina</div>
+        <div class="mrow"><span>Sonat (białe wytrawne)</span><span>0.7L 80</span></div>
+        <div class="mrow"><span>Sansa (czerwone, wytrawne)</span><span>0.7L 80 / 150ml 21</span></div>
+        <div class="mrow"><span>Mona (różowe, wytrawne)</span><span>0.7L 80 / 150ml 21</span></div>
+        <div class="mrow"><span>Larisa (białe półsłodkie)</span><span>0.7L 80 / 150ml 21</span></div>
+        <div class="mrow"><span>Florina (białe półsłodkie)</span><span>0.7L 80 / 150ml 21</span></div>
+        <div class="mrow"><span>Prosecco</span><span>kieliszek 15</span></div>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-cat">Drinki</div>
+        <div class="mrow"><span>Negroni</span><span>26</span></div>
+        <div class="mrow"><span>Old Fashion</span><span>26</span></div>
+        <div class="mrow"><span>Wódka Sour</span><span>22</span></div>
+        <div class="mrow"><span>Black Sour</span><span>22</span></div>
+        <div class="mrow"><span>Sex na plaży</span><span>28</span></div>
+        <div class="mrow"><span>Long Island Iced Tea</span><span>29</span></div>
+        <div class="mrow"><span>Mojito</span><span>27</span></div>
+        <div class="mrow"><span>Margarita</span><span>27</span></div>
+        <div class="mrow"><span>Spritz</span><span>23</span></div>
+        <div class="mrow"><span>Mule</span><span>23</span></div>
+        <div class="mrow"><span>Jagerbomb</span><span>27</span></div>
+
+        <div class="menu-cat mt">Drinki bezalkoholowe</div>
+        <div class="mrow"><span>Mojito Virgin</span><span>24</span></div>
+        <div class="mrow"><span>Mojito Virgin (truskawka lub marakuja)</span><span>24</span></div>
+        <div class="mrow"><span>Aperol Free</span><span>20</span></div>
+        <div class="mrow"><span>Black Tonic</span><span>20</span></div>
       </div>
     </div>
   </div>
@@ -860,15 +948,15 @@ footer{
         <div class="info-block">
           <div class="info-row">
             <span class="info-key">Adres</span>
-            <span class="info-val">✏️ ul. Młyńska 7, Ostrowiec Św.</span>
+            <span class="info-val"> ul. Młyńska 7, Ostrowiec Św.</span>
           </div>
           <div class="info-row">
             <span class="info-key">Tel</span>
-            <span class="info-val">✏️ +48 690 478 108</span>
+            <span class="info-val"> +48 690 478 108</span>
           </div>
           <div class="info-row">
             <span class="info-key">Email</span>
-            <span class="info-val">✏️ kontakt@___________.pl</span>
+            <span class="info-val"> restauracja.browarbezkultury@gmail.com</span>
           </div>
         </div>
         <div style="margin-top:2.5rem;">
@@ -977,9 +1065,9 @@ footer{
     <div>
       <div class="footer-title">Kontakt</div>
       <div class="footer-item">
-        📞 <a href="tel:+48690478108">✏️ +48 690 478 108</a><br>
-        ✉ <a href="mailto:kontakt@domena.pl">✏️ kontakt@domena.pl</a><br>
-        📍 ✏️ ul. Młyńska 7<br>
+        📞 <a href="tel:+48690478108"> +48 690 478 108</a><br>
+        ✉ <a href="mailto:restauracja.browarbezkultury@gmail.com">restauracja.browarbezkultury@gmail.com</a><br>
+        📍  ul. Młyńska 7<br>
         Ostrowiec Świętokrzyski
       </div>
     </div>
@@ -1050,6 +1138,16 @@ function pmTab(tab,btn){
 document.getElementById('privacyModal').addEventListener('click',function(e){
   if(e.target===this) closePrivacy();
 });
+// Licznik koszyka ze sklepu (localStorage bbk_cart)
+(function(){
+  try{
+    var raw=localStorage.getItem('bbk_cart');
+    var data=raw?JSON.parse(raw):[];
+    var count=data.reduce(function(s,i){return s+(i.qty||0);},0);
+    var el=document.getElementById('navCartCount');
+    if(el&&count>0){el.textContent=count;el.classList.add('has-items');}
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
